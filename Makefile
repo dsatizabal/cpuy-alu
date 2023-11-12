@@ -1,5 +1,4 @@
 # cocotb setup
-# MODULE = test.test_alu_arithmetic, test.test_alu_logic, test.test_alu_byte, test.test_alu_rotation
 MODULE = test.test_alu_arithmetic, test.test_alu_logic, test.test_alu_byte, test.test_alu_rotation
 export MODULE
 TOPLEVEL = tb

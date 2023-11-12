@@ -1,4 +1,4 @@
-# Simple 16-bits 16-levels stack
+# Simple ALU
 
 Implements a ALU that can be used for a CPU implementation, intended to be used in a simple 8-bits CPU implementation to be sent for Tapeout with the [Dec 2023 Efabless shuttle](https://efabless.com/gf-180-open-mpw-shuttle-program)
 
