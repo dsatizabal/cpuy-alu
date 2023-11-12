@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Sun Nov 12 14:16:25 2023
+[*]
+[dumpfile] "/home/dsatizabal/cpuy-alu/alu.vcd"
+[dumpfile_mtime] "Sun Nov 12 14:16:09 2023"
+[dumpfile_size] 961
+[savefile] "/home/dsatizabal/cpuy-alu/alu.gtkw"
+[timestart] 0
+[size] 1920 1033
+[pos] -1 -1
+*-13.211509 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 276
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 309
+@28
+alu.clk
+alu.rst
+alu.enable
+@22
+alu.operation[7:0]
+alu.op1[7:0]
+alu.op2[7:0]
+alu.result_h[7:0]
+alu.result_l[7:0]
+@28
+alu.carry
+alu.zero
+@29
+alu.sign
+[pattern_trace] 1
+[pattern_trace] 0

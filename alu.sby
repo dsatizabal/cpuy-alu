@@ -1,0 +1,16 @@
+[tasks]
+cover
+
+[options]
+cover: mode cover
+cover: depth 120
+
+[engines]
+smtbmc
+
+[script]
+read_verilog -formal alu.v
+prep -top alu
+
+[files]
+alu.v
