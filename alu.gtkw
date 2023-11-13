@@ -1,33 +1,34 @@
 [*]
 [*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
-[*] Sun Nov 12 14:16:25 2023
+[*] Mon Nov 13 11:38:19 2023
 [*]
 [dumpfile] "/home/dsatizabal/cpuy-alu/alu.vcd"
-[dumpfile_mtime] "Sun Nov 12 14:16:09 2023"
-[dumpfile_size] 961
+[dumpfile_mtime] "Mon Nov 13 11:37:11 2023"
+[dumpfile_size] 6405
 [savefile] "/home/dsatizabal/cpuy-alu/alu.gtkw"
 [timestart] 0
 [size] 1920 1033
-[pos] -1 -1
-*-13.211509 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -33 -33
+*-17.142519 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
 [sst_width] 276
-[signals_width] 142
+[signals_width] 166
 [sst_expanded] 1
 [sst_vpaned_height] 309
 @28
-alu.clk
-alu.rst
-alu.enable
+tb.clk_tb
+tb.rst_tb
+tb.enable_tb
 @22
-alu.operation[7:0]
-alu.op1[7:0]
-alu.op2[7:0]
-alu.result_h[7:0]
-alu.result_l[7:0]
+tb.operation_tb[7:0]
+tb.op1_tb[7:0]
+tb.op2_tb[7:0]
+tb.result_h_tb[7:0]
+tb.result_l_tb[7:0]
 @28
-alu.carry
-alu.zero
+tb.carry_tb
+tb.zero_tb
 @29
-alu.sign
+tb.sign_tb
 [pattern_trace] 1
 [pattern_trace] 0

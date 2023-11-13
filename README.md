@@ -1,13 +1,13 @@
 # Simple ALU
 
-Implements a ALU that can be used for a CPU implementation, intended to be used in a simple 8-bits CPU implementation to be sent for Tapeout with the [Dec 2023 Efabless shuttle](https://efabless.com/gf-180-open-mpw-shuttle-program)
+Implements an ALU that can be used for a CPU implementation, intended to be used in a simple 8-bits CPU to be sent for Tapeout in the [Dec 2023 Efabless shuttle](https://efabless.com/gf-180-open-mpw-shuttle-program)
 
 ## Inputs and Outputs description:
 
 - **clk**: input of CPU clock
 - **rst**: reset signal
 - **enable**: enables ALU for operation
-- **operation**: indicates the operation, see list below
+- **operation**: indicates the operation (see list below)
 - **op1**: operand 1
 - **op2**: operand 2
 - **cpu_carry**: current value of carry held by CPU
@@ -39,7 +39,7 @@ Single operand operations:
 
 ## Operation:
 
-If the *rst* signal is driven high for at least one clock cycle the ALU is resetted in a way that the result (*result_l* and *result_h* registers) are set to zero and also the threee flags, *carry, zero, sign* are set to low.
+If the *rst* signal is driven high for at least one clock cycle the ALU is resetted in a way that the result (*result_l* and *result_h* registers) are set to zero, also the threee flags: *carry, zero, sign* are set to low.
 
 If the *enable* signal is set to low the ALU won't perform any operation other than reset, so it can be somehow considered as isolated from the external system.
 
@@ -75,7 +75,7 @@ make test_alu
 
 you should see a result like this:
 
-![ALU module tests results](./img/tests.png "ALU results: timer module")
+![ALU module tests results](./img/tests.png "ALU results: ALU module")
 
 Observe in the Makefile that a dump_stack.v file is included and used to run the test command, in that file, the output file and the variables to be dumped (the name of the top module) are defined, after running the test the corresponding .vcd (value change dump) file is created and you can proceed to view it with the GtkWave command:
 
@@ -83,7 +83,7 @@ Observe in the Makefile that a dump_stack.v file is included and used to run the
 make gtkwave_alu
 ```
 
-a GtkWave window will open, you should see the hierarchy of the timer containing the available signals that can be displayed for examination, like in our case we're viewing the clk, rst, enable, operation, data_in, data_out, empty and full:
+a GtkWave window will open, you should see the hierarchy of the TestBechn and ALU containing the available signals that can be displayed for examination, like in our case we're viewing the clk, rst, enable, operation, data_in, data_out, empty and full:
 
 ![GtkWave results for ALU module](./img/gtkwave.png "GtkWave: ALU module")
 
