@@ -105,10 +105,10 @@ module alu (
 
 					1'b0: begin // Single operand operations
 						if (operation[6:3] == 4'b1100) begin // SetbW N
-							res_l = op1 | (8'b00000001 << operation[2:0]);
+							res_l <= op1 | (8'b00000001 << operation[2:0]);
 						end else if (operation[6:3] == 4'b1101) begin  // ClrbW N
-							if (op1 & ~(8'b00000001 << operation[2:0]) == 0) ze <= 1;
-							res_l = op1 & ~(8'b00000001 << operation[2:0]);
+							if ((op1 & ~(8'b00000001 << operation[2:0])) == 8'b0000_0000) ze <= 1;
+							res_l <= op1 & ~(8'b00000001 << operation[2:0]);
 						end else begin
 							case (operation)
 								8'b0000_0001: begin // DEC

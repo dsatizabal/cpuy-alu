@@ -109,7 +109,7 @@ async def rr_zero(dut):
 
     dut.op1_tb.value = 0
     dut.op2_tb.value = 0
-    dut.operation_tb.value = 6 # RL
+    dut.operation_tb.value = 7 # RR
 
     dut.rst_tb.value = 1
     await ClockCycles(dut.clk_tb, 2)
