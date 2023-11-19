@@ -17,7 +17,7 @@ Implements an ALU that can be used for a CPU implementation, intended to be used
 - **zero**: resulting zero flag
 - **sign**: resulting sign flag
 
-## Suppoerted Operations:
+## Supported Operations:
 
 Two operands operations:
 - **Add**: Adds Op1 + Op2
@@ -36,6 +36,8 @@ Single operand operations:
 - **RLC**: Rotates Op1 through carry to the left
 - **RRC**: Rotates Op1 through carry to the righ
 - **Swap**: Swaps nibbles of Op1
+- **Setb N**: Sets bit N of Work register to 1
+- **Clrb N**: Clears bit N of Work register to 0
 
 ## Operation:
 
