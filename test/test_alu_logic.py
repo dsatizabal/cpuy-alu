@@ -1,13 +1,9 @@
 import cocotb
-from cocotb.clock import Clock
-from cocotb.triggers import Timer, ClockCycles
+from cocotb.triggers import ReadWrite, Timer
 
 
 @cocotb.test()
 async def and_no_zero(dut):
-    clock = Clock(dut.clk_tb, 10, "us")
-    cocotb.fork(clock.start())
-
     dut.enable_tb.value = 1
     dut.cpu_carry_tb.value = 0
 
@@ -16,7 +12,8 @@ async def and_no_zero(dut):
     dut.operation_tb.value = 148 # AndLW
 
     dut.rst_tb.value = 1
-    await ClockCycles(dut.clk_tb, 2)
+    await ReadWrite()
+    await Timer(10, units="ns");
     dut.rst_tb.value = 0
 
     assert dut.carry_tb == 0, f"Unexpected carry";
@@ -25,9 +22,9 @@ async def and_no_zero(dut):
     assert dut.result_l_tb == 0, f"Unexpected result L";
     assert dut.result_h_tb == 0, f"Unexpected result H";
 
-    await ClockCycles(dut.clk_tb, 1)
-    # Required to have the propper results (propagation?), otherwise we'd require an additional clk cycle
+    await ReadWrite()
     await Timer(10, units="ns");
+
     dut.enable_tb.value = 0
     assert dut.carry_tb == 0, f"Unexpected carry (after operation)";
     assert dut.sign_tb == 0, f"Unexpected sign (after operation)";
@@ -37,9 +34,6 @@ async def and_no_zero(dut):
 
 @cocotb.test()
 async def and_zero(dut):
-    clock = Clock(dut.clk_tb, 10, "us")
-    cocotb.fork(clock.start())
-
     dut.enable_tb.value = 1
     dut.cpu_carry_tb.value = 0
 
@@ -48,7 +42,8 @@ async def and_zero(dut):
     dut.operation_tb.value = 150 # AndWM
 
     dut.rst_tb.value = 1
-    await ClockCycles(dut.clk_tb, 2)
+    await ReadWrite()
+    await Timer(10, units="ns");
     dut.rst_tb.value = 0
 
     assert dut.carry_tb == 0, f"Unexpected carry";
@@ -57,9 +52,9 @@ async def and_zero(dut):
     assert dut.result_l_tb == 0, f"Unexpected result L";
     assert dut.result_h_tb == 0, f"Unexpected result H";
 
-    await ClockCycles(dut.clk_tb, 1)
-    # Required to have the propper results (propagation?), otherwise we'd require an additional clk cycle
+    await ReadWrite()
     await Timer(10, units="ns");
+
     dut.enable_tb.value = 0
     assert dut.carry_tb == 0, f"Unexpected carry (after operation)";
     assert dut.sign_tb == 0, f"Unexpected sign (after operation)";
@@ -69,9 +64,6 @@ async def and_zero(dut):
 
 @cocotb.test()
 async def or_no_zero(dut):
-    clock = Clock(dut.clk_tb, 10, "us")
-    cocotb.fork(clock.start())
-
     dut.enable_tb.value = 1
     dut.cpu_carry_tb.value = 0
 
@@ -80,7 +72,8 @@ async def or_no_zero(dut):
     dut.operation_tb.value = 152 # OrLW
 
     dut.rst_tb.value = 1
-    await ClockCycles(dut.clk_tb, 2)
+    await ReadWrite()
+    await Timer(10, units="ns");
     dut.rst_tb.value = 0
 
     assert dut.carry_tb == 0, f"Unexpected carry";
@@ -89,9 +82,9 @@ async def or_no_zero(dut):
     assert dut.result_l_tb == 0, f"Unexpected result L";
     assert dut.result_h_tb == 0, f"Unexpected result H";
 
-    await ClockCycles(dut.clk_tb, 1)
-    # Required to have the propper results (propagation?), otherwise we'd require an additional clk cycle
+    await ReadWrite()
     await Timer(10, units="ns");
+
     dut.enable_tb.value = 0
     assert dut.carry_tb == 0, f"Unexpected carry (after operation)";
     assert dut.sign_tb == 0, f"Unexpected sign (after operation)";
@@ -101,9 +94,6 @@ async def or_no_zero(dut):
 
 @cocotb.test()
 async def or_zero(dut):
-    clock = Clock(dut.clk_tb, 10, "us")
-    cocotb.fork(clock.start())
-
     dut.enable_tb.value = 1
     dut.cpu_carry_tb.value = 0
 
@@ -112,7 +102,8 @@ async def or_zero(dut):
     dut.operation_tb.value = 154 # OrWM
 
     dut.rst_tb.value = 1
-    await ClockCycles(dut.clk_tb, 2)
+    await ReadWrite()
+    await Timer(10, units="ns");
     dut.rst_tb.value = 0
 
     assert dut.carry_tb == 0, f"Unexpected carry";
@@ -121,9 +112,9 @@ async def or_zero(dut):
     assert dut.result_l_tb == 0, f"Unexpected result L";
     assert dut.result_h_tb == 0, f"Unexpected result H";
 
-    await ClockCycles(dut.clk_tb, 1)
-    # Required to have the propper results (propagation?), otherwise we'd require an additional clk cycle
+    await ReadWrite()
     await Timer(10, units="ns");
+
     dut.enable_tb.value = 0
     assert dut.carry_tb == 0, f"Unexpected carry (after operation)";
     assert dut.sign_tb == 0, f"Unexpected sign (after operation)";
@@ -133,9 +124,6 @@ async def or_zero(dut):
 
 @cocotb.test()
 async def xor_no_zero(dut):
-    clock = Clock(dut.clk_tb, 10, "us")
-    cocotb.fork(clock.start())
-
     dut.enable_tb.value = 1
     dut.cpu_carry_tb.value = 0
 
@@ -144,7 +132,8 @@ async def xor_no_zero(dut):
     dut.operation_tb.value = 156 # XorLW
 
     dut.rst_tb.value = 1
-    await ClockCycles(dut.clk_tb, 2)
+    await ReadWrite()
+    await Timer(10, units="ns");
     dut.rst_tb.value = 0
 
     assert dut.carry_tb == 0, f"Unexpected carry";
@@ -153,9 +142,9 @@ async def xor_no_zero(dut):
     assert dut.result_l_tb == 0, f"Unexpected result L";
     assert dut.result_h_tb == 0, f"Unexpected result H";
 
-    await ClockCycles(dut.clk_tb, 1)
-    # Required to have the propper results (propagation?), otherwise we'd require an additional clk cycle
+    await ReadWrite()
     await Timer(10, units="ns");
+
     dut.enable_tb.value = 0
     assert dut.carry_tb == 0, f"Unexpected carry (after operation)";
     assert dut.sign_tb == 0, f"Unexpected sign (after operation)";
@@ -165,9 +154,6 @@ async def xor_no_zero(dut):
 
 @cocotb.test()
 async def xor_zero(dut):
-    clock = Clock(dut.clk_tb, 10, "us")
-    cocotb.fork(clock.start())
-
     dut.enable_tb.value = 1
     dut.cpu_carry_tb.value = 0
 
@@ -176,7 +162,8 @@ async def xor_zero(dut):
     dut.operation_tb.value = 158 # OrWM
 
     dut.rst_tb.value = 1
-    await ClockCycles(dut.clk_tb, 2)
+    await ReadWrite()
+    await Timer(10, units="ns");
     dut.rst_tb.value = 0
 
     assert dut.carry_tb == 0, f"Unexpected carry";
@@ -185,9 +172,9 @@ async def xor_zero(dut):
     assert dut.result_l_tb == 0, f"Unexpected result L";
     assert dut.result_h_tb == 0, f"Unexpected result H";
 
-    await ClockCycles(dut.clk_tb, 1)
-    # Required to have the propper results (propagation?), otherwise we'd require an additional clk cycle
+    await ReadWrite()
     await Timer(10, units="ns");
+
     dut.enable_tb.value = 0
     assert dut.carry_tb == 0, f"Unexpected carry (after operation)";
     assert dut.sign_tb == 0, f"Unexpected sign (after operation)";
@@ -197,9 +184,6 @@ async def xor_zero(dut):
 
 @cocotb.test()
 async def not_no_zero(dut):
-    clock = Clock(dut.clk_tb, 10, "us")
-    cocotb.fork(clock.start())
-
     dut.enable_tb.value = 1
     dut.cpu_carry_tb.value = 0
 
@@ -208,7 +192,8 @@ async def not_no_zero(dut):
     dut.operation_tb.value = 3 # Not
 
     dut.rst_tb.value = 1
-    await ClockCycles(dut.clk_tb, 2)
+    await ReadWrite()
+    await Timer(10, units="ns");
     dut.rst_tb.value = 0
 
     assert dut.carry_tb == 0, f"Unexpected carry";
@@ -217,9 +202,9 @@ async def not_no_zero(dut):
     assert dut.result_l_tb == 0, f"Unexpected result L";
     assert dut.result_h_tb == 0, f"Unexpected result H";
 
-    await ClockCycles(dut.clk_tb, 1)
-    # Required to have the propper results (propagation?), otherwise we'd require an additional clk cycle
+    await ReadWrite()
     await Timer(10, units="ns");
+
     dut.enable_tb.value = 0
     assert dut.carry_tb == 0, f"Unexpected carry (after operation)";
     assert dut.sign_tb == 0, f"Unexpected sign (after operation)";
@@ -229,9 +214,6 @@ async def not_no_zero(dut):
 
 @cocotb.test()
 async def not_zero(dut):
-    clock = Clock(dut.clk_tb, 10, "us")
-    cocotb.fork(clock.start())
-
     dut.enable_tb.value = 1
     dut.cpu_carry_tb.value = 0
 
@@ -240,7 +222,8 @@ async def not_zero(dut):
     dut.operation_tb.value = 3 # Not
 
     dut.rst_tb.value = 1
-    await ClockCycles(dut.clk_tb, 2)
+    await ReadWrite()
+    await Timer(10, units="ns");
     dut.rst_tb.value = 0
 
     assert dut.carry_tb == 0, f"Unexpected carry";
@@ -249,9 +232,9 @@ async def not_zero(dut):
     assert dut.result_l_tb == 0, f"Unexpected result L";
     assert dut.result_h_tb == 0, f"Unexpected result H";
 
-    await ClockCycles(dut.clk_tb, 1)
-    # Required to have the propper results (propagation?), otherwise we'd require an additional clk cycle
+    await ReadWrite()
     await Timer(10, units="ns");
+    
     dut.enable_tb.value = 0
     assert dut.carry_tb == 0, f"Unexpected carry (after operation)";
     assert dut.sign_tb == 0, f"Unexpected sign (after operation)";

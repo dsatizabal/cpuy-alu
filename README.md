@@ -4,7 +4,6 @@ Implements an ALU that can be used for a CPU implementation, intended to be used
 
 ## Inputs and Outputs description:
 
-- **clk**: input of CPU clock
 - **rst**: reset signal
 - **enable**: enables ALU for operation
 - **operation**: indicates the operation (see list below)
@@ -41,11 +40,13 @@ Single operand operations:
 
 ## Operation:
 
-If the *rst* signal is driven high for at least one clock cycle the ALU is resetted in a way that the result (*result_l* and *result_h* registers) are set to zero, also the threee flags: *carry, zero, sign* are set to low.
+This ALU is implemented as a combinational logic circuit so no clock is required.
+
+If the *rst* signal is driven high the ALU is resetted in a way that the result (*result_l* and *result_h* registers) are set to zero, also the threee flags: *carry, zero, sign* are set to low.
 
 If the *enable* signal is set to low the ALU won't perform any operation other than reset, so it can be somehow considered as isolated from the external system.
 
-All operations take a single clock cycle (rising edge) after enable/reset to complete. The operation input byte is meant to contain the complete Opcode of the instruction as stored in the ROM, no preprocessing is required.
+The operation input byte is meant to contain the complete Opcode of the instruction as stored in the ROM, no preprocessing is required.
 
 The result is normally outputted in the *result_l* register, for the case of Multiplication, where the result can span more than 8 bits, the upper byte of the result is placed in the *result_h* register.
 

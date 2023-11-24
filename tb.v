@@ -8,15 +8,14 @@ that can be driven / tested by the cocotb test.py
 
 module tb (
     // testbench is controlled by test/test_*.py files
-    input wire clk_tb,
     input wire rst_tb,
     input wire enable_tb,
     input wire [7:0] operation_tb,
     input wire [7:0] op1_tb,
     input wire [7:0] op2_tb,
 	input wire cpu_carry_tb,
-    output reg [7:0] result_l_tb,
-    output reg [7:0] result_h_tb,
+    output wire [7:0] result_l_tb,
+    output wire [7:0] result_h_tb,
     output wire carry_tb,
     output wire zero_tb,
     output wire sign_tb
@@ -24,7 +23,6 @@ module tb (
 
     // instantiate the DUT
     alu alu(
-        .clk (clk_tb),
         .rst (rst_tb),
         .enable (enable_tb),
         .operation (operation_tb),
